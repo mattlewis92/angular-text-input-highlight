@@ -7,7 +7,7 @@ API sketch
 @Component({
   template: `
     <textarea [(ngModel)]="text" #textarea></textarea>
-    <mwl-text-input-highlight [tags]="tags" [highlightElement]="textarea" (tagClicked)="tagClicked($event)"></mwl-text-input-highlight>
+    <mwl-text-input-highlight tagCssClass="default-tag-class" [tags]="tags" [highlightElement]="textarea" (tagClicked)="tagClicked($event)"></mwl-text-input-highlight>
   `
 })
 class MyCmp {
