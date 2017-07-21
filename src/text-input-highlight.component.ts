@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'mwl-hello-world',
+  selector: 'mwl-text-input-highlight',
   template: 'Hello world from the {{ projectTitle }} module!'
 })
 export class TextInputHighlightComponent {
