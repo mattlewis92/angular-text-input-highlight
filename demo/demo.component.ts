@@ -33,7 +33,7 @@ import { HighlightTag } from '../src/';
   encapsulation: ViewEncapsulation.None
 })
 export class DemoComponent implements OnInit {
-  text: string = 'Hello @mattlewis92 how are you today?\n\n@angular is pretty awesome!\n\nLook I have a #different background color!';
+  text: string = 'Hello @mattlewis92 how are you today?\n\nLook I have a #different background color!\n\n@angular is pretty awesome!';
 
   tags: HighlightTag[] = [];
 
