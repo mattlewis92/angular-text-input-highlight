@@ -112,6 +112,9 @@ https://mattlewis92.github.io/angular-text-input-highlight/docs/
 * Add outputs for tag clicked, tag mouseenter, mouseleave, mouseover events
 * Support `input[type="text"]` elements
 
+## Credits
+This component borrows heavily from the ideas of the [ui-mention](https://github.com/angular-ui/ui-mention) package.
+
 ## Development
 
 ### Prepare your environment
