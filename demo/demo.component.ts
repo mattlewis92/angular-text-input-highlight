@@ -28,6 +28,9 @@ import { HighlightTag } from '../src/';
       .bg-pink {
         background-color: lightcoral;
       }
+      textarea {
+        width: 500px;
+      }
     `
   ],
   encapsulation: ViewEncapsulation.None
