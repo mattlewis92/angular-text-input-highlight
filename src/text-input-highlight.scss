@@ -1,0 +1,29 @@
+.text-input-highlight-container {
+  position: relative;
+
+  .text-input-element {
+    background: none;
+    position: relative;
+    z-index: 2;
+    width: 500px;
+  }
+
+  .text-highlight-element {
+    overflow: hidden;
+    white-space: pre-wrap;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    color: rgba(0, 0, 0, 0);
+    z-index: 1;
+  }
+
+  .text-highlight-tag {
+    border-radius: 8px;
+    padding: 2px 3px;
+    margin: -1px -3px;
+  }
+}

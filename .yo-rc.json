@@ -1,0 +1,14 @@
+{
+  "generator-angular-library": {
+    "githubUsername": "mattlewis92",
+    "githubRepoName": "angular-text-input-highlight",
+    "npmModuleName": "angular-text-input-highlight",
+    "moduleGlobal": "angularTextInputHighlight",
+    "ngModuleName": "TextInputHighlightModule",
+    "selectorPrefix": "mwl",
+    "projectTitle": "angular text input highlight",
+    "projectDescription": "A component that can highlight parts of text in an input or textarea. Useful for displaying mentions etc",
+    "authorName": "Matt Lewis",
+    "packageManager": "npm"
+  }
+}
