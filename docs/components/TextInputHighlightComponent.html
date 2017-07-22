@@ -666,22 +666,22 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       );
     }
 
-    const computed: any &#x3D; getComputedStyle(this.textInputElement);
-    styleProperties.forEach(prop &#x3D;&gt; {
-      this.highlightElementContainerStyle[prop] &#x3D; computed[prop];
-    });
-
-    this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
-    this.textareaEventListeners &#x3D; [
-      this.renderer.listen(this.textInputElement, &#x27;input&#x27;, () &#x3D;&gt; {
-        this.addTags();
-      }),
-      this.renderer.listen(this.textInputElement, &#x27;scroll&#x27;, () &#x3D;&gt; {
-        this.highlightElement.nativeElement.scrollTop &#x3D; this.textInputElement.scrollTop;
-      })
-    ];
-
     setTimeout(() &#x3D;&gt; {
+      const computed: any &#x3D; getComputedStyle(this.textInputElement);
+      styleProperties.forEach(prop &#x3D;&gt; {
+        this.highlightElementContainerStyle[prop] &#x3D; computed[prop];
+      });
+
+      this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
+      this.textareaEventListeners &#x3D; [
+        this.renderer.listen(this.textInputElement, &#x27;input&#x27;, () &#x3D;&gt; {
+          this.addTags();
+        }),
+        this.renderer.listen(this.textInputElement, &#x27;scroll&#x27;, () &#x3D;&gt; {
+          this.highlightElement.nativeElement.scrollTop &#x3D; this.textInputElement.scrollTop;
+        })
+      ];
+
       this.addTags();
     });
   }
