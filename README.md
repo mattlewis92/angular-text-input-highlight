@@ -20,13 +20,18 @@ https://mattlewis92.github.io/angular-text-input-highlight/
 
 ## About
 
-A component that can highlight parts of text in an input or textarea. Useful for displaying mentions etc
+A component that can highlight parts of text in a textarea. Useful for displaying mentions etc
 
 ## Installation
 
 Install through npm:
 ```
 npm install --save angular-text-input-highlight
+```
+
+Include the stylesheet somewhere in your app:
+```
+node_modules/angular-text-input-highlight/text-input-highlight.css
 ```
 
 Then include in your apps module:
@@ -45,23 +50,46 @@ export class MyModule {}
 
 Finally use in one of your apps components:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { HighlightTag } from 'angular-text-input-highlight';
 
 @Component({
   template: `
-    <textarea [(ngModel)]="text" #textarea></textarea>
-    <mwl-text-input-highlight tagCssClass="default-tag-class" [tags]="tags" [highlightElement]="textarea" (tagClicked)="tagClicked($event)"></mwl-text-input-highlight>
-  `
+    <div mwlTextInputHighlightContainer>
+      <textarea
+        mwlTextInputElement
+        [(ngModel)]="text"
+        #textarea>
+      </textarea>
+      <mwl-text-input-highlight
+        [tags]="tags"
+        [textInputElement]="textarea">
+      </mwl-text-input-highlight>
+    </div>
+  `,
+  styles: [
+   `
+     // by default you won't see the highlighted tags until
+     // you add a CSS class with a background color
+     .bg-blue {
+       background-color: lightblue;
+     }
+     .bg-pink {
+       background-color: lightcoral;
+     }
+   `
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 class MyComponent {
 
   text = 'this is some text';
 
-  tags = [{indices: {start: 8, end: 12}, cssClass: 'highlight-tag-primary', data: {user: {id: 1}}}];
-
-  tagClicked(event) {
-    console.log(event); // logs {tagElement: HTMLElement, highlight: [{indices: {start: 8, end: 12}, cssClass: 'highlight-tag-primary', data: {user: {id: 1}}}]}
-  }
+  tags: HighlightTag[] = [{
+    indices: { start: 8, end: 12 },
+    cssClass: 'bg-blue',
+    data: { user: { id: 1 } }
+  }];
 
 }
 ```
@@ -79,6 +107,10 @@ You may also find it useful to view the [demo source](https://github.com/mattlew
 ## Documentation
 All documentation is auto-generated from the source via [compodoc](https://compodoc.github.io/compodoc/) and can be viewed here:
 https://mattlewis92.github.io/angular-text-input-highlight/docs/
+
+## Roadmap
+* Add outputs for tag clicked, tag mouseenter, mouseleave, mouseover events
+* Support `input[type="text"]` elements
 
 ## Development
 

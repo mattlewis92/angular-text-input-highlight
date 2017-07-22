@@ -1,3 +1,4 @@
+import '../src/text-input-highlight.scss';
 import 'core-js';
 import 'zone.js/dist/zone';
 import { enableProdMode } from '@angular/core';

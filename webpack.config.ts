@@ -33,6 +33,14 @@ export default {
       options: {
         transpileOnly: !IS_PROD
       }
+    }, {
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+      ],
+      exclude: /node_modules/
     }]
   },
   resolve: {
