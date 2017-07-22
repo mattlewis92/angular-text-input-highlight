@@ -135,22 +135,22 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       );
     }
 
-    const computed: any = getComputedStyle(this.textInputElement);
-    styleProperties.forEach(prop => {
-      this.highlightElementContainerStyle[prop] = computed[prop];
-    });
-
-    this.textareaEventListeners.forEach(unregister => unregister());
-    this.textareaEventListeners = [
-      this.renderer.listen(this.textInputElement, 'input', () => {
-        this.addTags();
-      }),
-      this.renderer.listen(this.textInputElement, 'scroll', () => {
-        this.highlightElement.nativeElement.scrollTop = this.textInputElement.scrollTop;
-      })
-    ];
-
     setTimeout(() => {
+      const computed: any = getComputedStyle(this.textInputElement);
+      styleProperties.forEach(prop => {
+        this.highlightElementContainerStyle[prop] = computed[prop];
+      });
+
+      this.textareaEventListeners.forEach(unregister => unregister());
+      this.textareaEventListeners = [
+        this.renderer.listen(this.textInputElement, 'input', () => {
+          this.addTags();
+        }),
+        this.renderer.listen(this.textInputElement, 'scroll', () => {
+          this.highlightElement.nativeElement.scrollTop = this.textInputElement.scrollTop;
+        })
+      ];
+
       this.addTags();
     });
   }
