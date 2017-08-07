@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.0.2...v1.0.3) (2017-08-07)
+
+
+### Bug Fixes
+
+* **ie:** fix styles in IE 11 and edge ([21a6abd](https://github.com/mattlewis92/angular-text-input-highlight/commit/21a6abd))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.0.1...v1.0.2) (2017-07-22)
 
