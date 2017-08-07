@@ -8,7 +8,7 @@
   }
 
   .text-highlight-element {
-    overflow: hidden;
+    overflow: hidden !important;
     white-space: pre-wrap;
     position: absolute;
     top: 0;
@@ -24,5 +24,6 @@
     border-radius: 8px;
     padding: 1px 3px;
     margin: -1px -3px;
+    display: inline-block;
   }
 }
