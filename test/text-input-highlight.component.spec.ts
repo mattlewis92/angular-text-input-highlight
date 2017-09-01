@@ -23,7 +23,10 @@ import { FormsModule } from '@angular/forms';
       </textarea>
       <mwl-text-input-highlight
         [tags]="tags"
-        [textInputElement]="textarea">
+        [textInputElement]="textarea"
+        (tagClick)="tagClick($event)"
+        (tagMouseEnter)="tagMouseEnter($event)"
+        (tagMouseLeave)="tagMouseLeave($event)">
       </mwl-text-input-highlight>
     </div>
   `,
@@ -39,6 +42,9 @@ class TestComponent {
   text: string;
   tags: HighlightTag[] = [];
   tagCssClass: string;
+  tagClick = sinon.spy();
+  tagMouseEnter = sinon.spy();
+  tagMouseLeave = sinon.spy();
 }
 
 function createComponent({
@@ -84,7 +90,7 @@ describe('mwl-text-input-highlight component', () => {
       });
       flushTagsChanges(fixture);
       expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
-        'this is <span class="text-highlight-tag">some</span> text&nbsp;'
+        'this is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text&nbsp;'
       );
     })
   );
@@ -104,7 +110,7 @@ describe('mwl-text-input-highlight component', () => {
       flushTagsChanges(fixture);
       errorStub.restore();
       expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
-        'this is <span class="text-highlight-tag">some</span> text that the user has typed in&nbsp;'
+        'this is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text that the user has typed in&nbsp;'
       );
     })
   );
@@ -137,7 +143,7 @@ describe('mwl-text-input-highlight component', () => {
       fixture.componentInstance.tagCssClass = 'foo-class';
       flushTagsChanges(fixture);
       expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
-        'this is <span class="text-highlight-tag foo-class">some</span> text&nbsp;'
+        'this is <span class="text-highlight-tag text-highlight-tag-id-0 foo-class">some</span> text&nbsp;'
       );
     })
   );
@@ -196,7 +202,7 @@ describe('mwl-text-input-highlight component', () => {
       });
       flushTagsChanges(fixture);
       expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
-        '<span class="text-highlight-tag">this</span> is <span class="text-highlight-tag">some</span> text&nbsp;'
+        '<span class="text-highlight-tag text-highlight-tag-id-1 ">this</span> is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text&nbsp;'
       );
     })
   );
@@ -213,7 +219,7 @@ describe('mwl-text-input-highlight component', () => {
       });
       flushTagsChanges(fixture);
       expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
-        '<span class="text-highlight-tag foo-class">this</span> is <span class="text-highlight-tag">some</span> text&nbsp;'
+        '<span class="text-highlight-tag text-highlight-tag-id-1 foo-class">this</span> is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text&nbsp;'
       );
     })
   );
@@ -258,4 +264,147 @@ describe('mwl-text-input-highlight component', () => {
       })
     ).to.throw();
   });
+
+  it(
+    'should fire the mouse clicked event',
+    fakeAsync(() => {
+      const { highlight, fixture } = createComponent({
+        text: 'this is some text',
+        tags: [{ indices: { start: 8, end: 12 } }]
+      });
+      flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
+      fixture.debugElement
+        .query(By.css('textarea'))
+        .triggerEventHandler('click', {
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
+        });
+      fixture.detectChanges();
+      expect(fixture.componentInstance.tagClick).to.have.been.calledWith({
+        target: highlight.nativeElement.querySelector('span'),
+        tag: { indices: { start: 8, end: 12 } }
+      });
+    })
+  );
+
+  it(
+    'should not fire the mouse clicked event',
+    fakeAsync(() => {
+      const { highlight, fixture } = createComponent({
+        text: 'this is some text',
+        tags: [{ indices: { start: 8, end: 12 } }]
+      });
+      flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
+      fixture.debugElement
+        .query(By.css('textarea'))
+        .triggerEventHandler('click', {
+          clientX: spanRect.left - 1,
+          clientY: spanRect.top + 1
+        });
+      fixture.detectChanges();
+      expect(fixture.componentInstance.tagClick.callCount).to.equal(0);
+    })
+  );
+
+  it(
+    'should fire the mouse enter and leave events',
+    fakeAsync(() => {
+      const { highlight, fixture } = createComponent({
+        text: 'this is some text',
+        tags: [{ indices: { start: 8, end: 12 } }]
+      });
+      flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
+      fixture.debugElement
+        .query(By.css('textarea'))
+        .triggerEventHandler('mousemove', {
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
+        });
+      fixture.detectChanges();
+      expect(fixture.componentInstance.tagMouseEnter).to.have.been.calledWith({
+        target: highlight.nativeElement.querySelector('span'),
+        tag: { indices: { start: 8, end: 12 } }
+      });
+      expect(fixture.componentInstance.tagMouseLeave.callCount).to.equal(0);
+      fixture.debugElement
+        .query(By.css('textarea'))
+        .triggerEventHandler('mousemove', {
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 2
+        });
+      fixture.detectChanges();
+      expect(fixture.componentInstance.tagMouseEnter.callCount).to.equal(1);
+      fixture.debugElement
+        .query(By.css('textarea'))
+        .triggerEventHandler('mousemove', {
+          clientX: spanRect.left - 1,
+          clientY: spanRect.top - 1
+        });
+      fixture.detectChanges();
+      expect(fixture.componentInstance.tagMouseLeave).to.have.been.calledWith({
+        target: highlight.nativeElement.querySelector('span'),
+        tag: { indices: { start: 8, end: 12 } }
+      });
+    })
+  );
+
+  it(
+    'should fire the mouse leave event when the textarea is not moused over anymore',
+    fakeAsync(() => {
+      const { highlight, fixture } = createComponent({
+        text: 'this is some text',
+        tags: [{ indices: { start: 8, end: 12 } }]
+      });
+      flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
+      fixture.debugElement
+        .query(By.css('textarea'))
+        .triggerEventHandler('mousemove', {
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
+        });
+      fixture.detectChanges();
+      expect(fixture.componentInstance.tagMouseEnter).to.have.been.calledWith({
+        target: highlight.nativeElement.querySelector('span'),
+        tag: { indices: { start: 8, end: 12 } }
+      });
+      expect(fixture.componentInstance.tagMouseLeave.callCount).to.equal(0);
+      fixture.debugElement
+        .query(By.css('textarea'))
+        .triggerEventHandler('mouseleave', {
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
+        });
+      fixture.detectChanges();
+      expect(fixture.componentInstance.tagMouseLeave).to.have.been.calledWith({
+        target: highlight.nativeElement.querySelector('span'),
+        tag: { indices: { start: 8, end: 12 } }
+      });
+    })
+  );
+
+  it(
+    'should not break with html characters',
+    fakeAsync(() => {
+      const { highlight, fixture } = createComponent({
+        text: 'this <s is some text',
+        tags: [{ indices: { start: 11, end: 15 } }]
+      });
+      flushTagsChanges(fixture);
+      expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
+        'this &lt;s is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text&nbsp;'
+      );
+    })
+  );
 });

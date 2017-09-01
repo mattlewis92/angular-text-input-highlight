@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.0.4...v1.1.0) (2017-09-01)
+
+
+### Bug Fixes
+
+* allow html special characters in the textarea value ([d86f155](https://github.com/mattlewis92/angular-text-input-highlight/commit/d86f155))
+
+
+### Features
+
+* add tagClick, tagMouseEnter and tagMouseLeave outputs ([2fb7817](https://github.com/mattlewis92/angular-text-input-highlight/commit/2fb7817))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.0.3...v1.0.4) (2017-08-14)
 
