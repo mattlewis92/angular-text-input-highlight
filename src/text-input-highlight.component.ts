@@ -1,9 +1,12 @@
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
+  Output,
   Renderer2,
   SimpleChanges,
   ViewChild
@@ -51,6 +54,8 @@ const styleProperties = Object.freeze([
   'MozTabSize'
 ]);
 
+const tagIndexIdPrefix = 'text-highlight-tag-id-';
+
 function indexIsInsideTag(index: number, tag: HighlightTag) {
   return tag.indices.start < index && index < tag.indices.end;
 }
@@ -60,6 +65,15 @@ function overlaps(tagA: HighlightTag, tagB: HighlightTag) {
     indexIsInsideTag(tagB.indices.start, tagA) ||
     indexIsInsideTag(tagB.indices.end, tagA)
   );
+}
+
+function isCoordinateWithinRect(rect: ClientRect, x: number, y: number) {
+  return rect.left < x && x < rect.right && (rect.top < y && y < rect.bottom);
+}
+
+export interface TagMouseEvent {
+  tag: HighlightTag;
+  target: HTMLElement;
 }
 
 @Component({
@@ -85,9 +99,24 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   @Input() tags: HighlightTag[] = [];
 
   /**
-   * The textarea to highlight. Currently only works with textareas.
+   * The textarea to highlight
    */
   @Input() textInputElement: HTMLTextAreaElement;
+
+  /**
+   * Called when the area over a tag is clicked
+   */
+  @Output() tagClick = new EventEmitter<TagMouseEvent>();
+
+  /**
+   * Called when the area over a tag is moused over
+   */
+  @Output() tagMouseEnter = new EventEmitter<TagMouseEvent>();
+
+  /**
+   * Called when the area over the tag has the mouse is removed from it
+   */
+  @Output() tagMouseLeave = new EventEmitter<TagMouseEvent>();
 
   /**
    * @private
@@ -103,7 +132,14 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
 
   private textareaEventListeners: Array<() => void> = [];
 
-  constructor(private renderer: Renderer2) {}
+  private highlightTagElements: Array<{
+    element: HTMLElement;
+    clientRect: ClientRect;
+  }>;
+
+  private mouseHoveredTag: TagMouseEvent | undefined;
+
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   /**
    * @private
@@ -148,8 +184,46 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
         }),
         this.renderer.listen(this.textInputElement, 'scroll', () => {
           this.highlightElement.nativeElement.scrollTop = this.textInputElement.scrollTop;
+          this.highlightTagElements = this.highlightTagElements.map(tag => {
+            tag.clientRect = tag.element.getBoundingClientRect();
+            return tag;
+          });
         })
       ];
+
+      // only add event listeners if the host component actually asks for it
+      if (this.tagClick.observers.length > 0) {
+        const onClick = this.renderer.listen(
+          this.textInputElement,
+          'click',
+          event => {
+            this.handleTextareaMouseEvent(event, 'click');
+          }
+        );
+        this.textareaEventListeners.push(onClick);
+      }
+
+      if (this.tagMouseEnter.observers.length > 0) {
+        const onMouseMove = this.renderer.listen(
+          this.textInputElement,
+          'mousemove',
+          event => {
+            this.handleTextareaMouseEvent(event, 'mousemove');
+          }
+        );
+        const onMouseLeave = this.renderer.listen(
+          this.textInputElement,
+          'mouseleave',
+          event => {
+            if (this.mouseHoveredTag) {
+              this.tagMouseLeave.emit(this.mouseHoveredTag);
+              this.mouseHoveredTag = undefined;
+            }
+          }
+        );
+        this.textareaEventListeners.push(onMouseMove);
+        this.textareaEventListeners.push(onMouseLeave);
+      }
 
       this.addTags();
     });
@@ -182,7 +256,8 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
           }
         });
 
-        // TODO - implement this as an ngFor of items that is generated in the template
+        // TODO - implement this as an ngFor of items that is generated in the template,
+        // as currently adding html like tags breaks things
         const before = textareaValue.slice(0, tag.indices.start);
         const after = textareaValue.slice(tag.indices.end);
 
@@ -193,15 +268,50 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
         );
         if (tagContents.length === expectedTagLength) {
           const cssClass = tag.cssClass || this.tagCssClass;
+          const tagId = tagIndexIdPrefix + this.tags.indexOf(tag);
+          // text-highlight-tag-id-${id} is used instead of a data attribute to prevent an angular sanitization warning
           textareaValue =
             before +
-            `<span class="text-highlight-tag${cssClass
-              ? ' '
-              : ''}${cssClass}">${tagContents}</span>` +
+            `<span class="text-highlight-tag ${tagId} ${cssClass}">${tagContents}</span>` +
             after;
           prevTags.push(tag);
         }
       });
     this.highlightedText = `${textareaValue}&nbsp;`;
+    this.cdr.detectChanges();
+    this.highlightTagElements = Array.from(
+      this.highlightElement.nativeElement.getElementsByTagName('span')
+    ).map((element: HTMLElement) => {
+      return { element, clientRect: element.getBoundingClientRect() };
+    });
+  }
+
+  private handleTextareaMouseEvent(
+    event: MouseEvent,
+    eventName: 'click' | 'mousemove'
+  ) {
+    const matchingTagIndex = this.highlightTagElements.findIndex(elm =>
+      isCoordinateWithinRect(elm.clientRect, event.clientX, event.clientY)
+    );
+    if (matchingTagIndex > -1) {
+      const target = this.highlightTagElements[matchingTagIndex].element;
+      const tagClass = Array.from(target.classList).find(className =>
+        className.startsWith(tagIndexIdPrefix)
+      );
+      if (tagClass) {
+        const tagId = tagClass.replace(tagIndexIdPrefix, '');
+        const tag: HighlightTag = this.tags[+tagId];
+        const tagMouseEvent = { tag, target };
+        if (eventName === 'click') {
+          this.tagClick.emit(tagMouseEvent);
+        } else if (!this.mouseHoveredTag) {
+          this.mouseHoveredTag = tagMouseEvent;
+          this.tagMouseEnter.emit(tagMouseEvent);
+        }
+      }
+    } else if (eventName === 'mousemove' && this.mouseHoveredTag) {
+      this.tagMouseLeave.emit(this.mouseHoveredTag);
+      this.mouseHoveredTag = undefined;
+    }
   }
 }

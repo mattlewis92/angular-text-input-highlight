@@ -108,9 +108,6 @@ You may also find it useful to view the [demo source](https://github.com/mattlew
 All documentation is auto-generated from the source via [compodoc](https://compodoc.github.io/compodoc/) and can be viewed here:
 https://mattlewis92.github.io/angular-text-input-highlight/docs/
 
-## Roadmap
-* Add outputs for tag clicked, tag mouseenter, mouseleave, mouseover events
-
 ## Credits
 This component borrows heavily from the ideas of the [ui-mention](https://github.com/angular-ui/ui-mention) package.
 
