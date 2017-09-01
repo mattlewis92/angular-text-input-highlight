@@ -1,0 +1,859 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-text-input-highlight documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-text-input-highlight documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">angular-text-input-highlight documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/DemoModule.html" >DemoModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/TextInputHighlightModule.html" >TextInputHighlightModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/DemoComponent.html" >DemoComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TextInputHighlightComponent.html" >TextInputHighlightComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/TextInputElementDirective.html" >TextInputElementDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../directives/TextInputHighlightContainerDirective.html" >TextInputHighlightContainerDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/HighlightTag.html" >HighlightTag</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/TagMouseEvent.html"  data-type="entity-link" class="active" >TagMouseEvent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">angular-text-input-highlight documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/DemoModule.html" >DemoModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/TextInputHighlightModule.html" >TextInputHighlightModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/DemoComponent.html" >DemoComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TextInputHighlightComponent.html" >TextInputHighlightComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/TextInputElementDirective.html" >TextInputElementDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../directives/TextInputHighlightContainerDirective.html" >TextInputHighlightContainerDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/HighlightTag.html" >HighlightTag</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TagMouseEvent.html"  data-type="entity-link" class="active" >TagMouseEvent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>TagMouseEvent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/text-input-highlight.component.ts</code>
+        </p>
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#tag">tag</a>
+                                </li>
+                                <li>
+                                        <a href="#target">target</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="tag"></a>
+                                        <b>tag</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>tag:     <code><a href="../interfaces/HighlightTag.html" target="_self" >HighlightTag</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="../interfaces/HighlightTag.html" target="_self" >HighlightTag</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/text-input-highlight.component.ts:79</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="target"></a>
+                                        <b>target</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>target:     <code>HTMLElement</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>HTMLElement</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/text-input-highlight.component.ts:80</a></div>
+                                        </td>
+                                    </tr>
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  Renderer2,
+  SimpleChanges,
+  ViewChild
+} from &#x27;@angular/core&#x27;;
+import { HighlightTag } from &#x27;./highlight-tag.interface&#x27;;
+
+const styleProperties &#x3D; Object.freeze([
+  &#x27;direction&#x27;, // RTL support
+  &#x27;boxSizing&#x27;,
+  &#x27;width&#x27;, // on Chrome and IE, exclude the scrollbar, so the mirror div wraps exactly as the textarea does
+  &#x27;height&#x27;,
+  &#x27;overflowX&#x27;,
+  &#x27;overflowY&#x27;, // copy the scrollbar for IE
+
+  &#x27;borderTopWidth&#x27;,
+  &#x27;borderRightWidth&#x27;,
+  &#x27;borderBottomWidth&#x27;,
+  &#x27;borderLeftWidth&#x27;,
+  &#x27;borderStyle&#x27;,
+
+  &#x27;paddingTop&#x27;,
+  &#x27;paddingRight&#x27;,
+  &#x27;paddingBottom&#x27;,
+  &#x27;paddingLeft&#x27;,
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/font
+  &#x27;fontStyle&#x27;,
+  &#x27;fontVariant&#x27;,
+  &#x27;fontWeight&#x27;,
+  &#x27;fontStretch&#x27;,
+  &#x27;fontSize&#x27;,
+  &#x27;fontSizeAdjust&#x27;,
+  &#x27;lineHeight&#x27;,
+  &#x27;fontFamily&#x27;,
+
+  &#x27;textAlign&#x27;,
+  &#x27;textTransform&#x27;,
+  &#x27;textIndent&#x27;,
+  &#x27;textDecoration&#x27;, // might not make a difference, but better be safe
+
+  &#x27;letterSpacing&#x27;,
+  &#x27;wordSpacing&#x27;,
+
+  &#x27;tabSize&#x27;,
+  &#x27;MozTabSize&#x27;
+]);
+
+const tagIndexIdPrefix &#x3D; &#x27;text-highlight-tag-id-&#x27;;
+
+function indexIsInsideTag(index: number, tag: HighlightTag) {
+  return tag.indices.start &lt; index &amp;&amp; index &lt; tag.indices.end;
+}
+
+function overlaps(tagA: HighlightTag, tagB: HighlightTag) {
+  return (
+    indexIsInsideTag(tagB.indices.start, tagA) ||
+    indexIsInsideTag(tagB.indices.end, tagA)
+  );
+}
+
+function isCoordinateWithinRect(rect: ClientRect, x: number, y: number) {
+  return rect.left &lt; x &amp;&amp; x &lt; rect.right &amp;&amp; (rect.top &lt; y &amp;&amp; y &lt; rect.bottom);
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&lt;/g, &#x27;&amp;lt;&#x27;).replace(/&gt;/g, &#x27;&amp;gt;&#x27;);
+}
+
+export interface TagMouseEvent {
+  tag: HighlightTag;
+  target: HTMLElement;
+}
+
+@Component({
+  selector: &#x27;mwl-text-input-highlight&#x27;,
+  template: &#x60;
+    &lt;div
+      class&#x3D;&quot;text-highlight-element&quot;
+      [ngStyle]&#x3D;&quot;highlightElementContainerStyle&quot;
+      [innerHtml]&#x3D;&quot;highlightedText&quot;
+      #highlightElement&gt;
+    &lt;/div&gt;
+  &#x60;
+})
+export class TextInputHighlightComponent implements OnChanges, OnDestroy {
+  /**
+   * The CSS class to add to highlighted tags
+   */
+  @Input() tagCssClass: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * An array of indices of the textarea value to highlight
+   */
+  @Input() tags: HighlightTag[] &#x3D; [];
+
+  /**
+   * The textarea to highlight
+   */
+  @Input() textInputElement: HTMLTextAreaElement;
+
+  /**
+   * Called when the area over a tag is clicked
+   */
+  @Output() tagClick &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
+
+  /**
+   * Called when the area over a tag is moused over
+   */
+  @Output() tagMouseEnter &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
+
+  /**
+   * Called when the area over the tag has the mouse is removed from it
+   */
+  @Output() tagMouseLeave &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
+
+  /**
+   * @private
+   */
+  highlightElementContainerStyle: { [key: string]: string } &#x3D; {};
+
+  /**
+   * @private
+   */
+  highlightedText: string;
+
+  @ViewChild(&#x27;highlightElement&#x27;) private highlightElement: ElementRef;
+
+  private textareaEventListeners: Array&lt;() &#x3D;&gt; void&gt; &#x3D; [];
+
+  private highlightTagElements: Array&lt;{
+    element: HTMLElement;
+    clientRect: ClientRect;
+  }&gt;;
+
+  private mouseHoveredTag: TagMouseEvent | undefined;
+
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+
+  /**
+   * @private
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.textInputElement) {
+      this.textInputElementChanged();
+    }
+
+    if (changes.tags || changes.tagCssClass) {
+      this.addTags();
+    }
+  }
+
+  /**
+   * @private
+   */
+  ngOnDestroy(): void {
+    this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
+  }
+
+  private textInputElementChanged() {
+    const elementType &#x3D; this.textInputElement.tagName.toLowerCase();
+    if (elementType !&#x3D;&#x3D; &#x27;textarea&#x27;) {
+      throw new Error(
+        &#x27;The angular-text-input-highlight component must be passed &#x27; +
+          &#x27;a textarea to the &#x60;textInputElement&#x60; input. Instead received a &#x27; +
+          elementType
+      );
+    }
+
+    setTimeout(() &#x3D;&gt; {
+      const computed: any &#x3D; getComputedStyle(this.textInputElement);
+      styleProperties.forEach(prop &#x3D;&gt; {
+        this.highlightElementContainerStyle[prop] &#x3D; computed[prop];
+      });
+
+      this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
+      this.textareaEventListeners &#x3D; [
+        this.renderer.listen(this.textInputElement, &#x27;input&#x27;, () &#x3D;&gt; {
+          this.addTags();
+        }),
+        this.renderer.listen(this.textInputElement, &#x27;scroll&#x27;, () &#x3D;&gt; {
+          this.highlightElement.nativeElement.scrollTop &#x3D; this.textInputElement.scrollTop;
+          this.highlightTagElements &#x3D; this.highlightTagElements.map(tag &#x3D;&gt; {
+            tag.clientRect &#x3D; tag.element.getBoundingClientRect();
+            return tag;
+          });
+        })
+      ];
+
+      // only add event listeners if the host component actually asks for it
+      if (this.tagClick.observers.length &gt; 0) {
+        const onClick &#x3D; this.renderer.listen(
+          this.textInputElement,
+          &#x27;click&#x27;,
+          event &#x3D;&gt; {
+            this.handleTextareaMouseEvent(event, &#x27;click&#x27;);
+          }
+        );
+        this.textareaEventListeners.push(onClick);
+      }
+
+      if (this.tagMouseEnter.observers.length &gt; 0) {
+        const onMouseMove &#x3D; this.renderer.listen(
+          this.textInputElement,
+          &#x27;mousemove&#x27;,
+          event &#x3D;&gt; {
+            this.handleTextareaMouseEvent(event, &#x27;mousemove&#x27;);
+          }
+        );
+        const onMouseLeave &#x3D; this.renderer.listen(
+          this.textInputElement,
+          &#x27;mouseleave&#x27;,
+          event &#x3D;&gt; {
+            if (this.mouseHoveredTag) {
+              this.tagMouseLeave.emit(this.mouseHoveredTag);
+              this.mouseHoveredTag &#x3D; undefined;
+            }
+          }
+        );
+        this.textareaEventListeners.push(onMouseMove);
+        this.textareaEventListeners.push(onMouseLeave);
+      }
+
+      this.addTags();
+    });
+  }
+
+  private addTags() {
+    const textareaValue &#x3D; this.textInputElement.value;
+
+    const prevTags: HighlightTag[] &#x3D; [];
+    const parts: string[] &#x3D; [];
+
+    [...this.tags]
+      .sort((tagA, tagB) &#x3D;&gt; {
+        return tagA.indices.start - tagB.indices.start;
+      })
+      .forEach(tag &#x3D;&gt; {
+        if (tag.indices.start &gt; tag.indices.end) {
+          throw new Error(
+            &#x60;Highlight tag with indices [${tag.indices.start}, ${tag.indices
+              .end}] cannot start after it ends.&#x60;
+          );
+        }
+
+        prevTags.forEach(prevTag &#x3D;&gt; {
+          if (overlaps(prevTag, tag)) {
+            throw new Error(
+              &#x60;Highlight tag with indices [${tag.indices.start}, ${tag.indices
+                .end}] overlaps with tag [${prevTag.indices.start}, ${prevTag
+                .indices.end}]&#x60;
+            );
+          }
+        });
+
+        // TODO - implement this as an ngFor of items that is generated in the template for a cleaner solution
+
+        const expectedTagLength &#x3D; tag.indices.end - tag.indices.start;
+        const tagContents &#x3D; textareaValue.slice(
+          tag.indices.start,
+          tag.indices.end
+        );
+        if (tagContents.length &#x3D;&#x3D;&#x3D; expectedTagLength) {
+          const previousIndex &#x3D;
+            prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
+          const before &#x3D; textareaValue.slice(previousIndex, tag.indices.start);
+          parts.push(escapeHtml(before));
+          const cssClass &#x3D; tag.cssClass || this.tagCssClass;
+          const tagId &#x3D; tagIndexIdPrefix + this.tags.indexOf(tag);
+          // text-highlight-tag-id-${id} is used instead of a data attribute to prevent an angular sanitization warning
+          parts.push(
+            &#x60;&lt;span class&#x3D;&quot;text-highlight-tag ${tagId} ${cssClass}&quot;&gt;${escapeHtml(
+              tagContents
+            )}&lt;/span&gt;&#x60;
+          );
+          prevTags.push(tag);
+        }
+      });
+    const remainingIndex &#x3D;
+      prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
+    const remaining &#x3D; textareaValue.slice(remainingIndex);
+    parts.push(escapeHtml(remaining));
+    parts.push(&#x27;&amp;nbsp;&#x27;);
+    this.highlightedText &#x3D; parts.join(&#x27;&#x27;);
+    this.cdr.detectChanges();
+    this.highlightTagElements &#x3D; Array.from(
+      this.highlightElement.nativeElement.getElementsByTagName(&#x27;span&#x27;)
+    ).map((element: HTMLElement) &#x3D;&gt; {
+      return { element, clientRect: element.getBoundingClientRect() };
+    });
+  }
+
+  private handleTextareaMouseEvent(
+    event: MouseEvent,
+    eventName: &#x27;click&#x27; | &#x27;mousemove&#x27;
+  ) {
+    const matchingTagIndex &#x3D; this.highlightTagElements.findIndex(elm &#x3D;&gt;
+      isCoordinateWithinRect(elm.clientRect, event.clientX, event.clientY)
+    );
+    if (matchingTagIndex &gt; -1) {
+      const target &#x3D; this.highlightTagElements[matchingTagIndex].element;
+      const tagClass &#x3D; Array.from(target.classList).find(className &#x3D;&gt;
+        className.startsWith(tagIndexIdPrefix)
+      );
+      if (tagClass) {
+        const tagId &#x3D; tagClass.replace(tagIndexIdPrefix, &#x27;&#x27;);
+        const tag: HighlightTag &#x3D; this.tags[+tagId];
+        const tagMouseEvent &#x3D; { tag, target };
+        if (eventName &#x3D;&#x3D;&#x3D; &#x27;click&#x27;) {
+          this.tagClick.emit(tagMouseEvent);
+        } else if (!this.mouseHoveredTag) {
+          this.mouseHoveredTag &#x3D; tagMouseEvent;
+          this.tagMouseEnter.emit(tagMouseEvent);
+        }
+      }
+    } else if (eventName &#x3D;&#x3D;&#x3D; &#x27;mousemove&#x27; &amp;&amp; this.mouseHoveredTag) {
+      this.tagMouseLeave.emit(this.mouseHoveredTag);
+      this.mouseHoveredTag &#x3D; undefined;
+    }
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>

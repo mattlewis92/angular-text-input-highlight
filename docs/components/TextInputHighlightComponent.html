@@ -141,6 +141,9 @@
                                 <li class="link">
                                     <a href="../interfaces/HighlightTag.html" >HighlightTag</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/TagMouseEvent.html" >TagMouseEvent</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -305,6 +308,9 @@
                                        <li class="link">
                                            <a href="../interfaces/HighlightTag.html" >HighlightTag</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TagMouseEvent.html" >TagMouseEvent</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -467,6 +473,26 @@
                         </ul>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#tagClick">tagClick</a>
+                            </li>
+                            <li>
+                                <a href="#tagMouseEnter">tagMouseEnter</a>
+                            </li>
+                            <li>
+                                <a href="#tagMouseLeave">tagMouseLeave</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </section>
@@ -477,12 +503,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank">Renderer2</a>)</code>
+                            <code>constructor(renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank">Renderer2</a>, cdr: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank">ChangeDetectorRef</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/text-input-highlight.component.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/text-input-highlight.component.ts:144</a></div>
                                 </td>
                             </tr>
     
@@ -510,7 +536,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/text-input-highlight.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/text-input-highlight.component.ts:98</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -533,7 +559,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/text-input-highlight.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/text-input-highlight.component.ts:103</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -546,7 +572,7 @@
                             <code>textInputElement</code>
                         </td>
                         <td class="col-md-10">
-                            <div><p>The textarea to highlight. Currently only works with textareas.</p>
+                            <div><p>The textarea to highlight</p>
 </div>
                               <p>
                                 <em>Type:</em>    <code>HTMLTextAreaElement</code>
@@ -556,13 +582,79 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/text-input-highlight.component.ts:90</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/text-input-highlight.component.ts:108</a></div>
                                 </td>
                             </tr>
                 </tbody>
             </table>
     </section>
 
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="tagClick"></a>
+                            <code>tagClick</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Called when the area over a tag is clicked</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/text-input-highlight.component.ts:113</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="tagMouseEnter"></a>
+                            <code>tagMouseEnter</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Called when the area over a tag is moused over</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/text-input-highlight.component.ts:118</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="tagMouseLeave"></a>
+                            <code>tagMouseLeave</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Called when the area over the tag has the mouse is removed from it</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/text-input-highlight.component.ts:123</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
 
 
     <section>
@@ -592,7 +684,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/text-input-highlight.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/text-input-highlight.component.ts:133</a></div>
                                 </td>
                             </tr>
     
@@ -621,7 +713,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/text-input-highlight.component.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/text-input-highlight.component.ts:128</a></div>
                                 </td>
                             </tr>
     
@@ -634,11 +726,14 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
+  Output,
   Renderer2,
   SimpleChanges,
   ViewChild
@@ -686,6 +781,8 @@ const styleProperties &#x3D; Object.freeze([
   &#x27;MozTabSize&#x27;
 ]);
 
+const tagIndexIdPrefix &#x3D; &#x27;text-highlight-tag-id-&#x27;;
+
 function indexIsInsideTag(index: number, tag: HighlightTag) {
   return tag.indices.start &lt; index &amp;&amp; index &lt; tag.indices.end;
 }
@@ -695,6 +792,19 @@ function overlaps(tagA: HighlightTag, tagB: HighlightTag) {
     indexIsInsideTag(tagB.indices.start, tagA) ||
     indexIsInsideTag(tagB.indices.end, tagA)
   );
+}
+
+function isCoordinateWithinRect(rect: ClientRect, x: number, y: number) {
+  return rect.left &lt; x &amp;&amp; x &lt; rect.right &amp;&amp; (rect.top &lt; y &amp;&amp; y &lt; rect.bottom);
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&lt;/g, &#x27;&amp;lt;&#x27;).replace(/&gt;/g, &#x27;&amp;gt;&#x27;);
+}
+
+export interface TagMouseEvent {
+  tag: HighlightTag;
+  target: HTMLElement;
 }
 
 @Component({
@@ -720,9 +830,24 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   @Input() tags: HighlightTag[] &#x3D; [];
 
   /**
-   * The textarea to highlight. Currently only works with textareas.
+   * The textarea to highlight
    */
   @Input() textInputElement: HTMLTextAreaElement;
+
+  /**
+   * Called when the area over a tag is clicked
+   */
+  @Output() tagClick &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
+
+  /**
+   * Called when the area over a tag is moused over
+   */
+  @Output() tagMouseEnter &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
+
+  /**
+   * Called when the area over the tag has the mouse is removed from it
+   */
+  @Output() tagMouseLeave &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
 
   /**
    * @private
@@ -738,7 +863,14 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
 
   private textareaEventListeners: Array&lt;() &#x3D;&gt; void&gt; &#x3D; [];
 
-  constructor(private renderer: Renderer2) {}
+  private highlightTagElements: Array&lt;{
+    element: HTMLElement;
+    clientRect: ClientRect;
+  }&gt;;
+
+  private mouseHoveredTag: TagMouseEvent | undefined;
+
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   /**
    * @private
@@ -783,21 +915,60 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
         }),
         this.renderer.listen(this.textInputElement, &#x27;scroll&#x27;, () &#x3D;&gt; {
           this.highlightElement.nativeElement.scrollTop &#x3D; this.textInputElement.scrollTop;
+          this.highlightTagElements &#x3D; this.highlightTagElements.map(tag &#x3D;&gt; {
+            tag.clientRect &#x3D; tag.element.getBoundingClientRect();
+            return tag;
+          });
         })
       ];
+
+      // only add event listeners if the host component actually asks for it
+      if (this.tagClick.observers.length &gt; 0) {
+        const onClick &#x3D; this.renderer.listen(
+          this.textInputElement,
+          &#x27;click&#x27;,
+          event &#x3D;&gt; {
+            this.handleTextareaMouseEvent(event, &#x27;click&#x27;);
+          }
+        );
+        this.textareaEventListeners.push(onClick);
+      }
+
+      if (this.tagMouseEnter.observers.length &gt; 0) {
+        const onMouseMove &#x3D; this.renderer.listen(
+          this.textInputElement,
+          &#x27;mousemove&#x27;,
+          event &#x3D;&gt; {
+            this.handleTextareaMouseEvent(event, &#x27;mousemove&#x27;);
+          }
+        );
+        const onMouseLeave &#x3D; this.renderer.listen(
+          this.textInputElement,
+          &#x27;mouseleave&#x27;,
+          event &#x3D;&gt; {
+            if (this.mouseHoveredTag) {
+              this.tagMouseLeave.emit(this.mouseHoveredTag);
+              this.mouseHoveredTag &#x3D; undefined;
+            }
+          }
+        );
+        this.textareaEventListeners.push(onMouseMove);
+        this.textareaEventListeners.push(onMouseLeave);
+      }
 
       this.addTags();
     });
   }
 
   private addTags() {
-    let textareaValue &#x3D; this.textInputElement.value;
+    const textareaValue &#x3D; this.textInputElement.value;
 
     const prevTags: HighlightTag[] &#x3D; [];
+    const parts: string[] &#x3D; [];
 
     [...this.tags]
       .sort((tagA, tagB) &#x3D;&gt; {
-        return tagB.indices.start - tagA.indices.start;
+        return tagA.indices.start - tagB.indices.start;
       })
       .forEach(tag &#x3D;&gt; {
         if (tag.indices.start &gt; tag.indices.end) {
@@ -817,9 +988,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
           }
         });
 
-        // TODO - implement this as an ngFor of items that is generated in the template
-        const before &#x3D; textareaValue.slice(0, tag.indices.start);
-        const after &#x3D; textareaValue.slice(tag.indices.end);
+        // TODO - implement this as an ngFor of items that is generated in the template for a cleaner solution
 
         const expectedTagLength &#x3D; tag.indices.end - tag.indices.start;
         const tagContents &#x3D; textareaValue.slice(
@@ -827,17 +996,62 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
           tag.indices.end
         );
         if (tagContents.length &#x3D;&#x3D;&#x3D; expectedTagLength) {
+          const previousIndex &#x3D;
+            prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
+          const before &#x3D; textareaValue.slice(previousIndex, tag.indices.start);
+          parts.push(escapeHtml(before));
           const cssClass &#x3D; tag.cssClass || this.tagCssClass;
-          textareaValue &#x3D;
-            before +
-            &#x60;&lt;span class&#x3D;&quot;text-highlight-tag${cssClass
-              ? &#x27; &#x27;
-              : &#x27;&#x27;}${cssClass}&quot;&gt;${tagContents}&lt;/span&gt;&#x60; +
-            after;
+          const tagId &#x3D; tagIndexIdPrefix + this.tags.indexOf(tag);
+          // text-highlight-tag-id-${id} is used instead of a data attribute to prevent an angular sanitization warning
+          parts.push(
+            &#x60;&lt;span class&#x3D;&quot;text-highlight-tag ${tagId} ${cssClass}&quot;&gt;${escapeHtml(
+              tagContents
+            )}&lt;/span&gt;&#x60;
+          );
           prevTags.push(tag);
         }
       });
-    this.highlightedText &#x3D; &#x60;${textareaValue}&amp;nbsp;&#x60;;
+    const remainingIndex &#x3D;
+      prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
+    const remaining &#x3D; textareaValue.slice(remainingIndex);
+    parts.push(escapeHtml(remaining));
+    parts.push(&#x27;&amp;nbsp;&#x27;);
+    this.highlightedText &#x3D; parts.join(&#x27;&#x27;);
+    this.cdr.detectChanges();
+    this.highlightTagElements &#x3D; Array.from(
+      this.highlightElement.nativeElement.getElementsByTagName(&#x27;span&#x27;)
+    ).map((element: HTMLElement) &#x3D;&gt; {
+      return { element, clientRect: element.getBoundingClientRect() };
+    });
+  }
+
+  private handleTextareaMouseEvent(
+    event: MouseEvent,
+    eventName: &#x27;click&#x27; | &#x27;mousemove&#x27;
+  ) {
+    const matchingTagIndex &#x3D; this.highlightTagElements.findIndex(elm &#x3D;&gt;
+      isCoordinateWithinRect(elm.clientRect, event.clientX, event.clientY)
+    );
+    if (matchingTagIndex &gt; -1) {
+      const target &#x3D; this.highlightTagElements[matchingTagIndex].element;
+      const tagClass &#x3D; Array.from(target.classList).find(className &#x3D;&gt;
+        className.startsWith(tagIndexIdPrefix)
+      );
+      if (tagClass) {
+        const tagId &#x3D; tagClass.replace(tagIndexIdPrefix, &#x27;&#x27;);
+        const tag: HighlightTag &#x3D; this.tags[+tagId];
+        const tagMouseEvent &#x3D; { tag, target };
+        if (eventName &#x3D;&#x3D;&#x3D; &#x27;click&#x27;) {
+          this.tagClick.emit(tagMouseEvent);
+        } else if (!this.mouseHoveredTag) {
+          this.mouseHoveredTag &#x3D; tagMouseEvent;
+          this.tagMouseEnter.emit(tagMouseEvent);
+        }
+      }
+    } else if (eventName &#x3D;&#x3D;&#x3D; &#x27;mousemove&#x27; &amp;&amp; this.mouseHoveredTag) {
+      this.tagMouseLeave.emit(this.mouseHoveredTag);
+      this.mouseHoveredTag &#x3D; undefined;
+    }
   }
 }
 </code></pre>

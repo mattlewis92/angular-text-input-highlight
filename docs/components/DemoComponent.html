@@ -141,6 +141,9 @@
                                 <li class="link">
                                     <a href="../interfaces/HighlightTag.html" >HighlightTag</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/TagMouseEvent.html" >TagMouseEvent</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -305,6 +308,9 @@
                                        <li class="link">
                                            <a href="../interfaces/HighlightTag.html" >HighlightTag</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TagMouseEvent.html" >TagMouseEvent</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -420,6 +426,12 @@
       .bg-pink {
         background-color: lightcoral;
       }
+      .bg-blue-dark {
+        background-color: #86c5da;
+      }
+      .bg-pink-dark {
+        background-color: #eb5252;
+      }
       textarea {
         width: 500px;
       }
@@ -440,8 +452,15 @@
   &lt;mwl-text-input-highlight
     [tags]&#x3D;&quot;tags&quot;
     [tagCssClass]&#x3D;&quot;&#x27;bg-blue&#x27;&quot;
-    [textInputElement]&#x3D;&quot;textarea&quot;&gt;
+    [textInputElement]&#x3D;&quot;textarea&quot;
+    (tagMouseEnter)&#x3D;&quot;addDarkClass($event.target)&quot;
+    (tagMouseLeave)&#x3D;&quot;removeDarkClass($event.target)&quot;
+    (tagClick)&#x3D;&quot;tagClicked &#x3D; $event.tag&quot;&gt;
   &lt;/mwl-text-input-highlight&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;div class&#x3D;&quot;alert alert-info&quot; *ngIf&#x3D;&quot;tagClicked&quot;&gt;
+  Tag clicked! {{ tagClicked.data }}
 &lt;/div&gt;
 </code></pre></td>
             </tr>
@@ -465,6 +484,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                 <a href="#tagClicked">tagClicked</a>
+                            </li>
+                            <li>
                                  <a href="#tags">tags</a>
                             </li>
                             <li>
@@ -482,7 +504,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                 <a href="#addDarkClass">addDarkClass</a>
+                            </li>
+                            <li>
                                  <a href="#addTags">addTags</a>
+                            </li>
+                            <li>
+                                 <a href="#removeDarkClass">removeDarkClass</a>
                             </li>
                         </ul>
                     </td>
@@ -503,6 +531,38 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="addDarkClass"></a>
+                            <b> addDarkClass</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>addDarkClass(elm: HTMLElement)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">demo/demo.component.ts:92</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="addTags"></a>
                             <b> addTags</b>
                         </td>
@@ -516,7 +576,39 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">demo/demo.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">demo/demo.component.ts:62</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="removeDarkClass"></a>
+                            <b> removeDarkClass</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>removeDarkClass(elm: HTMLElement)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">demo/demo.component.ts:100</a></div>
                                 </td>
                             </tr>
     
@@ -542,6 +634,35 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="tagClicked"></a>
+                            <b> tagClicked</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>tagClicked:     <code><a href="../interfaces/HighlightTag.html" target="_self" >HighlightTag</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../interfaces/HighlightTag.html" target="_self" >HighlightTag</a></code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">demo/demo.component.ts:56</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="tags"></a>
                             <b> tags</b>
                         </td>
@@ -560,7 +681,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">demo/demo.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">demo/demo.component.ts:54</a></div>
                                 </td>
                             </tr>
     
@@ -598,7 +719,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">demo/demo.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">demo/demo.component.ts:52</a></div>
                                 </td>
                             </tr>
     
@@ -628,8 +749,15 @@ import { HighlightTag } from &#x27;../src/&#x27;;
       &lt;mwl-text-input-highlight
         [tags]&#x3D;&quot;tags&quot;
         [tagCssClass]&#x3D;&quot;&#x27;bg-blue&#x27;&quot;
-        [textInputElement]&#x3D;&quot;textarea&quot;&gt;
+        [textInputElement]&#x3D;&quot;textarea&quot;
+        (tagMouseEnter)&#x3D;&quot;addDarkClass($event.target)&quot;
+        (tagMouseLeave)&#x3D;&quot;removeDarkClass($event.target)&quot;
+        (tagClick)&#x3D;&quot;tagClicked &#x3D; $event.tag&quot;&gt;
       &lt;/mwl-text-input-highlight&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    &lt;div class&#x3D;&quot;alert alert-info&quot; *ngIf&#x3D;&quot;tagClicked&quot;&gt;
+      Tag clicked! {{ tagClicked.data }}
     &lt;/div&gt;
   &#x60;,
   styles: [
@@ -639,6 +767,12 @@ import { HighlightTag } from &#x27;../src/&#x27;;
       }
       .bg-pink {
         background-color: lightcoral;
+      }
+      .bg-blue-dark {
+        background-color: #86c5da;
+      }
+      .bg-pink-dark {
+        background-color: #eb5252;
       }
       textarea {
         width: 500px;
@@ -651,6 +785,8 @@ export class DemoComponent implements OnInit {
   text: string &#x3D; &#x27;Hello @mattlewis92 how are you today?\n\nLook I have a #different background color!\n\n@angular is pretty awesome!&#x27;;
 
   tags: HighlightTag[] &#x3D; [];
+
+  tagClicked: HighlightTag;
 
   ngOnInit(): void {
     this.addTags();
@@ -666,7 +802,8 @@ export class DemoComponent implements OnInit {
         indices: {
           start: mention.index,
           end: mention.index + mention[1].length
-        }
+        },
+        data: mention[1]
       });
     }
 
@@ -679,9 +816,23 @@ export class DemoComponent implements OnInit {
           start: hashtag.index,
           end: hashtag.index + hashtag[1].length
         },
-        cssClass: &#x27;bg-pink&#x27;
+        cssClass: &#x27;bg-pink&#x27;,
+        data: hashtag[1]
       });
     }
+  }
+
+  addDarkClass(elm: HTMLElement) {
+    if (elm.classList.contains(&#x27;bg-blue&#x27;)) {
+      elm.classList.add(&#x27;bg-blue-dark&#x27;);
+    } else if (elm.classList.contains(&#x27;bg-pink&#x27;)) {
+      elm.classList.add(&#x27;bg-pink-dark&#x27;);
+    }
+  }
+
+  removeDarkClass(elm: HTMLElement) {
+    elm.classList.remove(&#x27;bg-blue-dark&#x27;);
+    elm.classList.remove(&#x27;bg-pink-dark&#x27;);
   }
 }
 </code></pre>
@@ -711,7 +862,7 @@ export class DemoComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div mwlTextInputHighlightContainer>  <textarea    mwlTextInputElement    rows="6"    class="form-control"    [(ngModel)]="text"    #textarea    (input)="addTags()">  </textarea>  <mwl-text-input-highlight    [tags]="tags"    [tagCssClass]="\'bg-blue\'"    [textInputElement]="textarea">  </mwl-text-input-highlight></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div mwlTextInputHighlightContainer>  <textarea    mwlTextInputElement    rows="6"    class="form-control"    [(ngModel)]="text"    #textarea    (input)="addTags()">  </textarea>  <mwl-text-input-highlight    [tags]="tags"    [tagCssClass]="\'bg-blue\'"    [textInputElement]="textarea"    (tagMouseEnter)="addDarkClass($event.target)"    (tagMouseLeave)="removeDarkClass($event.target)"    (tagClick)="tagClicked = $event.tag">  </mwl-text-input-highlight></div><br><div class="alert alert-info" *ngIf="tagClicked">  Tag clicked! {{ tagClicked.data }}</div></div>'
     var COMPONENTS = [{'name': 'DemoComponent', 'selector': 'mwl-demo-app'},{'name': 'TextInputHighlightComponent', 'selector': 'mwl-text-input-highlight'}];
     var DIRECTIVES = [{'name': 'TextInputElementDirective', 'selector': 'textarea[mwlTextInputElement]'},{'name': 'TextInputHighlightContainerDirective', 'selector': '[mwlTextInputHighlightContainer]'}];
     var ACTUAL_COMPONENT = {'name': 'DemoComponent'};
