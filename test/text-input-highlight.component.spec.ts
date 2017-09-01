@@ -273,11 +273,14 @@ describe('mwl-text-input-highlight component', () => {
         tags: [{ indices: { start: 8, end: 12 } }]
       });
       flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
       fixture.debugElement
         .query(By.css('textarea'))
         .triggerEventHandler('click', {
-          clientX: 45,
-          clientY: 75
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagClick).to.have.been.calledWith({
@@ -295,11 +298,14 @@ describe('mwl-text-input-highlight component', () => {
         tags: [{ indices: { start: 8, end: 12 } }]
       });
       flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
       fixture.debugElement
         .query(By.css('textarea'))
         .triggerEventHandler('click', {
-          clientX: 45,
-          clientY: 10
+          clientX: spanRect.left - 1,
+          clientY: spanRect.top + 1
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagClick.callCount).to.equal(0);
@@ -314,11 +320,14 @@ describe('mwl-text-input-highlight component', () => {
         tags: [{ indices: { start: 8, end: 12 } }]
       });
       flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
       fixture.debugElement
         .query(By.css('textarea'))
         .triggerEventHandler('mousemove', {
-          clientX: 45,
-          clientY: 75
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseEnter).to.have.been.calledWith({
@@ -329,16 +338,16 @@ describe('mwl-text-input-highlight component', () => {
       fixture.debugElement
         .query(By.css('textarea'))
         .triggerEventHandler('mousemove', {
-          clientX: 44,
-          clientY: 75
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 2
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseEnter.callCount).to.equal(1);
       fixture.debugElement
         .query(By.css('textarea'))
         .triggerEventHandler('mousemove', {
-          clientX: 45,
-          clientY: 10
+          clientX: spanRect.left - 1,
+          clientY: spanRect.top - 1
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseLeave).to.have.been.calledWith({
@@ -356,11 +365,14 @@ describe('mwl-text-input-highlight component', () => {
         tags: [{ indices: { start: 8, end: 12 } }]
       });
       flushTagsChanges(fixture);
+      const spanRect = fixture.nativeElement
+        .querySelector('.text-highlight-tag')
+        .getBoundingClientRect();
       fixture.debugElement
         .query(By.css('textarea'))
         .triggerEventHandler('mousemove', {
-          clientX: 45,
-          clientY: 75
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseEnter).to.have.been.calledWith({
@@ -371,8 +383,8 @@ describe('mwl-text-input-highlight component', () => {
       fixture.debugElement
         .query(By.css('textarea'))
         .triggerEventHandler('mouseleave', {
-          clientX: 44,
-          clientY: 75
+          clientX: spanRect.left + 1,
+          clientY: spanRect.top + 1
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseLeave).to.have.been.calledWith({
