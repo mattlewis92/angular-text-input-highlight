@@ -381,4 +381,18 @@ describe('mwl-text-input-highlight component', () => {
       });
     })
   );
+
+  it(
+    'should not break with html characters',
+    fakeAsync(() => {
+      const { highlight, fixture } = createComponent({
+        text: 'this <s is some text',
+        tags: [{ indices: { start: 11, end: 15 } }]
+      });
+      flushTagsChanges(fixture);
+      expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
+        'this &lt;s is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text&nbsp;'
+      );
+    })
+  );
 });

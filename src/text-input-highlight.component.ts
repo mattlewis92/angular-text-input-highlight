@@ -71,6 +71,10 @@ function isCoordinateWithinRect(rect: ClientRect, x: number, y: number) {
   return rect.left < x && x < rect.right && (rect.top < y && y < rect.bottom);
 }
 
+function escapeHtml(str: string): string {
+  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 export interface TagMouseEvent {
   tag: HighlightTag;
   target: HTMLElement;
@@ -230,13 +234,14 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   }
 
   private addTags() {
-    let textareaValue = this.textInputElement.value;
+    const textareaValue = this.textInputElement.value;
 
     const prevTags: HighlightTag[] = [];
+    const parts: string[] = [];
 
     [...this.tags]
       .sort((tagA, tagB) => {
-        return tagB.indices.start - tagA.indices.start;
+        return tagA.indices.start - tagB.indices.start;
       })
       .forEach(tag => {
         if (tag.indices.start > tag.indices.end) {
@@ -256,10 +261,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
           }
         });
 
-        // TODO - implement this as an ngFor of items that is generated in the template,
-        // as currently adding html like tags breaks things
-        const before = textareaValue.slice(0, tag.indices.start);
-        const after = textareaValue.slice(tag.indices.end);
+        // TODO - implement this as an ngFor of items that is generated in the template for a cleaner solution
 
         const expectedTagLength = tag.indices.end - tag.indices.start;
         const tagContents = textareaValue.slice(
@@ -267,17 +269,27 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
           tag.indices.end
         );
         if (tagContents.length === expectedTagLength) {
+          const previousIndex =
+            prevTags.length > 0 ? prevTags[prevTags.length - 1].indices.end : 0;
+          const before = textareaValue.slice(previousIndex, tag.indices.start);
+          parts.push(escapeHtml(before));
           const cssClass = tag.cssClass || this.tagCssClass;
           const tagId = tagIndexIdPrefix + this.tags.indexOf(tag);
           // text-highlight-tag-id-${id} is used instead of a data attribute to prevent an angular sanitization warning
-          textareaValue =
-            before +
-            `<span class="text-highlight-tag ${tagId} ${cssClass}">${tagContents}</span>` +
-            after;
+          parts.push(
+            `<span class="text-highlight-tag ${tagId} ${cssClass}">${escapeHtml(
+              tagContents
+            )}</span>`
+          );
           prevTags.push(tag);
         }
       });
-    this.highlightedText = `${textareaValue}&nbsp;`;
+    const remainingIndex =
+      prevTags.length > 0 ? prevTags[prevTags.length - 1].indices.end : 0;
+    const remaining = textareaValue.slice(remainingIndex);
+    parts.push(escapeHtml(remaining));
+    parts.push('&nbsp;');
+    this.highlightedText = parts.join('');
     this.cdr.detectChanges();
     this.highlightTagElements = Array.from(
       this.highlightElement.nativeElement.getElementsByTagName('span')
