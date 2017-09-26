@@ -441,7 +441,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/text-input-highlight.component.ts:79</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/text-input-highlight.component.ts:80</a></div>
                                         </td>
                                     </tr>
 
@@ -474,7 +474,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/text-input-highlight.component.ts:80</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/text-input-highlight.component.ts:81</a></div>
                                         </td>
                                     </tr>
 
@@ -490,6 +490,7 @@
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   OnChanges,
   OnDestroy,
@@ -652,6 +653,14 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
     this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
   }
 
+  /**
+   * @private
+   */
+  @HostListener(&#x27;window:resize&#x27;)
+  onWindowResize() {
+    this.copyTextareaStyles();
+  }
+
   private textInputElementChanged() {
     const elementType &#x3D; this.textInputElement.tagName.toLowerCase();
     if (elementType !&#x3D;&#x3D; &#x27;textarea&#x27;) {
@@ -663,10 +672,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
     }
 
     setTimeout(() &#x3D;&gt; {
-      const computed: any &#x3D; getComputedStyle(this.textInputElement);
-      styleProperties.forEach(prop &#x3D;&gt; {
-        this.highlightElementContainerStyle[prop] &#x3D; computed[prop];
-      });
+      this.copyTextareaStyles();
 
       this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
       this.textareaEventListeners &#x3D; [
@@ -812,6 +818,13 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       this.tagMouseLeave.emit(this.mouseHoveredTag);
       this.mouseHoveredTag &#x3D; undefined;
     }
+  }
+
+  private copyTextareaStyles() {
+    const computed: any &#x3D; getComputedStyle(this.textInputElement);
+    styleProperties.forEach(prop &#x3D;&gt; {
+      this.highlightElementContainerStyle[prop] &#x3D; computed[prop];
+    });
   }
 }
 </code></pre>
