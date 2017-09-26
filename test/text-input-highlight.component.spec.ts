@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     `
     textarea {
       height: 50px;
+      width: 100px;
     }
   `
   ]
@@ -405,6 +406,28 @@ describe('mwl-text-input-highlight component', () => {
       expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
         'this &lt;s is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text&nbsp;'
       );
+    })
+  );
+
+  it(
+    'should update the textareas dimensions when the window is resized',
+    fakeAsync(() => {
+      const { highlight, fixture, textarea } = createComponent({
+        text: 'this is some text',
+        tags: [
+          { indices: { start: 8, end: 12 } },
+          { indices: { start: 0, end: 4 } }
+        ]
+      });
+      flushTagsChanges(fixture);
+      const highlightElement = highlight.query(
+        By.css('.text-highlight-element')
+      ).nativeElement;
+      expect(highlightElement.offsetWidth).to.equal(106);
+      textarea.nativeElement.style.width = '200px';
+      highlight.componentInstance.onWindowResize();
+      fixture.detectChanges();
+      expect(highlightElement.offsetWidth).to.equal(206);
     })
   );
 });
