@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   OnChanges,
   OnDestroy,
@@ -165,6 +166,14 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
     this.textareaEventListeners.forEach(unregister => unregister());
   }
 
+  /**
+   * @private
+   */
+  @HostListener('window:resize')
+  onWindowResize() {
+    this.copyTextareaStyles();
+  }
+
   private textInputElementChanged() {
     const elementType = this.textInputElement.tagName.toLowerCase();
     if (elementType !== 'textarea') {
@@ -176,10 +185,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
     }
 
     setTimeout(() => {
-      const computed: any = getComputedStyle(this.textInputElement);
-      styleProperties.forEach(prop => {
-        this.highlightElementContainerStyle[prop] = computed[prop];
-      });
+      this.copyTextareaStyles();
 
       this.textareaEventListeners.forEach(unregister => unregister());
       this.textareaEventListeners = [
@@ -325,5 +331,12 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       this.tagMouseLeave.emit(this.mouseHoveredTag);
       this.mouseHoveredTag = undefined;
     }
+  }
+
+  private copyTextareaStyles() {
+    const computed: any = getComputedStyle(this.textInputElement);
+    styleProperties.forEach(prop => {
+      this.highlightElementContainerStyle[prop] = computed[prop];
+    });
   }
 }
