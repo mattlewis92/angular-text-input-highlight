@@ -149,6 +149,16 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   /**
+   * Manually call this function to refresh the highlight element if the textarea styles have changed
+   */
+  refresh() {
+    const computed: any = getComputedStyle(this.textInputElement);
+    styleProperties.forEach(prop => {
+      this.highlightElementContainerStyle[prop] = computed[prop];
+    });
+  }
+
+  /**
    * @private
    */
   ngOnChanges(changes: SimpleChanges): void {
@@ -174,7 +184,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
    */
   @HostListener('window:resize')
   onWindowResize() {
-    this.copyTextareaStyles();
+    this.refresh();
   }
 
   private textInputElementChanged() {
@@ -190,7 +200,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
     setTimeout(() => {
       // in case the element was destroyed before the timeout fires
       if (!this.isDestroyed) {
-        this.copyTextareaStyles();
+        this.refresh();
 
         this.textareaEventListeners.forEach(unregister => unregister());
         this.textareaEventListeners = [
@@ -337,12 +347,5 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       this.tagMouseLeave.emit(this.mouseHoveredTag);
       this.mouseHoveredTag = undefined;
     }
-  }
-
-  private copyTextareaStyles() {
-    const computed: any = getComputedStyle(this.textInputElement);
-    styleProperties.forEach(prop => {
-      this.highlightElementContainerStyle[prop] = computed[prop];
-    });
   }
 }
