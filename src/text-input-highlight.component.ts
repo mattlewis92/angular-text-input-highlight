@@ -144,6 +144,8 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
 
   private mouseHoveredTag: TagMouseEvent | undefined;
 
+  private isDestroyed = false;
+
   constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   /**
@@ -163,6 +165,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
    * @private
    */
   ngOnDestroy(): void {
+    this.isDestroyed = true;
     this.textareaEventListeners.forEach(unregister => unregister());
   }
 
@@ -185,57 +188,60 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
     }
 
     setTimeout(() => {
-      this.copyTextareaStyles();
+      // in case the element was destroyed before the timeout fires
+      if (!this.isDestroyed) {
+        this.copyTextareaStyles();
 
-      this.textareaEventListeners.forEach(unregister => unregister());
-      this.textareaEventListeners = [
-        this.renderer.listen(this.textInputElement, 'input', () => {
-          this.addTags();
-        }),
-        this.renderer.listen(this.textInputElement, 'scroll', () => {
-          this.highlightElement.nativeElement.scrollTop = this.textInputElement.scrollTop;
-          this.highlightTagElements = this.highlightTagElements.map(tag => {
-            tag.clientRect = tag.element.getBoundingClientRect();
-            return tag;
-          });
-        })
-      ];
+        this.textareaEventListeners.forEach(unregister => unregister());
+        this.textareaEventListeners = [
+          this.renderer.listen(this.textInputElement, 'input', () => {
+            this.addTags();
+          }),
+          this.renderer.listen(this.textInputElement, 'scroll', () => {
+            this.highlightElement.nativeElement.scrollTop = this.textInputElement.scrollTop;
+            this.highlightTagElements = this.highlightTagElements.map(tag => {
+              tag.clientRect = tag.element.getBoundingClientRect();
+              return tag;
+            });
+          })
+        ];
 
-      // only add event listeners if the host component actually asks for it
-      if (this.tagClick.observers.length > 0) {
-        const onClick = this.renderer.listen(
-          this.textInputElement,
-          'click',
-          event => {
-            this.handleTextareaMouseEvent(event, 'click');
-          }
-        );
-        this.textareaEventListeners.push(onClick);
-      }
-
-      if (this.tagMouseEnter.observers.length > 0) {
-        const onMouseMove = this.renderer.listen(
-          this.textInputElement,
-          'mousemove',
-          event => {
-            this.handleTextareaMouseEvent(event, 'mousemove');
-          }
-        );
-        const onMouseLeave = this.renderer.listen(
-          this.textInputElement,
-          'mouseleave',
-          event => {
-            if (this.mouseHoveredTag) {
-              this.tagMouseLeave.emit(this.mouseHoveredTag);
-              this.mouseHoveredTag = undefined;
+        // only add event listeners if the host component actually asks for it
+        if (this.tagClick.observers.length > 0) {
+          const onClick = this.renderer.listen(
+            this.textInputElement,
+            'click',
+            event => {
+              this.handleTextareaMouseEvent(event, 'click');
             }
-          }
-        );
-        this.textareaEventListeners.push(onMouseMove);
-        this.textareaEventListeners.push(onMouseLeave);
-      }
+          );
+          this.textareaEventListeners.push(onClick);
+        }
 
-      this.addTags();
+        if (this.tagMouseEnter.observers.length > 0) {
+          const onMouseMove = this.renderer.listen(
+            this.textInputElement,
+            'mousemove',
+            event => {
+              this.handleTextareaMouseEvent(event, 'mousemove');
+            }
+          );
+          const onMouseLeave = this.renderer.listen(
+            this.textInputElement,
+            'mouseleave',
+            event => {
+              if (this.mouseHoveredTag) {
+                this.tagMouseLeave.emit(this.mouseHoveredTag);
+                this.mouseHoveredTag = undefined;
+              }
+            }
+          );
+          this.textareaEventListeners.push(onMouseMove);
+          this.textareaEventListeners.push(onMouseLeave);
+        }
+
+        this.addTags();
+      }
     });
   }
 
