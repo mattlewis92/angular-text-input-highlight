@@ -462,7 +462,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#onWindowResize">onWindowResize</a>
+                                 <a href="#refresh">refresh</a>
                             </li>
                         </ul>
                     </td>
@@ -507,6 +507,20 @@
                         </ul>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#window:resize">window:resize</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </section>
@@ -522,10 +536,47 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/text-input-highlight.component.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/text-input-highlight.component.ts:147</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>renderer</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank" >Renderer2</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>cdr</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -566,7 +617,7 @@
                             <div><p>An array of indices of the textarea value to highlight</p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>[]</code>
+                                <em>Type:</em>    <code><a href="../interfaces/HighlightTag.html" target="_self" >HighlightTag[]</a></code>
 
                               </p>
                         </td>
@@ -670,6 +721,33 @@
             </table>
     </section>
 
+
+    <section>
+        <h3>HostListeners</h3>        <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="window:resize"></a>
+                            <span class="name"><b> window:resize</b><a href="#window:resize"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>window:resize()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/text-input-highlight.component.ts:186</a></div>
+                                </td>
+                            </tr>
+    
+                </tbody>
+            </table>
+    </section>
+
     <section>
         
             <h3 id="methods">
@@ -679,40 +757,32 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="onWindowResize"></a>
-                            <b> onWindowResize</b>
+                            <a name="refresh"></a>
+                            <span class="name"><b> refresh</b><a href="#refresh"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>onWindowResize()</code>
+    <code>refresh()</code>
                         </td>
                     </tr>
     
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Decorators : </i><code>HostListener</code>
-                            </td>
-                        </tr>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">src/text-input-highlight.component.ts:173</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/text-input-highlight.component.ts:154</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Manually call this function to refresh the highlight element if the textarea styles have changed</p>
+    </div>
     
-                                <div>
-                                </div>
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
-                                    <div class="io-description">
-                                        
-                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -729,7 +799,7 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="highlightedText"></a>
-                            <b> highlightedText</b>
+                            <span class="name"><b> highlightedText</b><a href="#highlightedText"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -758,7 +828,7 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="highlightElementContainerStyle"></a>
-                            <b> highlightElementContainerStyle</b>
+                            <span class="name"><b> highlightElementContainerStyle</b><a href="#highlightElementContainerStyle"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
@@ -933,7 +1003,19 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
 
   private mouseHoveredTag: TagMouseEvent | undefined;
 
+  private isDestroyed &#x3D; false;
+
   constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+
+  /**
+   * Manually call this function to refresh the highlight element if the textarea styles have changed
+   */
+  refresh() {
+    const computed: any &#x3D; getComputedStyle(this.textInputElement);
+    styleProperties.forEach(prop &#x3D;&gt; {
+      this.highlightElementContainerStyle[prop] &#x3D; computed[prop];
+    });
+  }
 
   /**
    * @private
@@ -952,6 +1034,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
    * @private
    */
   ngOnDestroy(): void {
+    this.isDestroyed &#x3D; true;
     this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
   }
 
@@ -960,7 +1043,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
    */
   @HostListener(&#x27;window:resize&#x27;)
   onWindowResize() {
-    this.copyTextareaStyles();
+    this.refresh();
   }
 
   private textInputElementChanged() {
@@ -974,57 +1057,60 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
     }
 
     setTimeout(() &#x3D;&gt; {
-      this.copyTextareaStyles();
+      // in case the element was destroyed before the timeout fires
+      if (!this.isDestroyed) {
+        this.refresh();
 
-      this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
-      this.textareaEventListeners &#x3D; [
-        this.renderer.listen(this.textInputElement, &#x27;input&#x27;, () &#x3D;&gt; {
-          this.addTags();
-        }),
-        this.renderer.listen(this.textInputElement, &#x27;scroll&#x27;, () &#x3D;&gt; {
-          this.highlightElement.nativeElement.scrollTop &#x3D; this.textInputElement.scrollTop;
-          this.highlightTagElements &#x3D; this.highlightTagElements.map(tag &#x3D;&gt; {
-            tag.clientRect &#x3D; tag.element.getBoundingClientRect();
-            return tag;
-          });
-        })
-      ];
+        this.textareaEventListeners.forEach(unregister &#x3D;&gt; unregister());
+        this.textareaEventListeners &#x3D; [
+          this.renderer.listen(this.textInputElement, &#x27;input&#x27;, () &#x3D;&gt; {
+            this.addTags();
+          }),
+          this.renderer.listen(this.textInputElement, &#x27;scroll&#x27;, () &#x3D;&gt; {
+            this.highlightElement.nativeElement.scrollTop &#x3D; this.textInputElement.scrollTop;
+            this.highlightTagElements &#x3D; this.highlightTagElements.map(tag &#x3D;&gt; {
+              tag.clientRect &#x3D; tag.element.getBoundingClientRect();
+              return tag;
+            });
+          })
+        ];
 
-      // only add event listeners if the host component actually asks for it
-      if (this.tagClick.observers.length &gt; 0) {
-        const onClick &#x3D; this.renderer.listen(
-          this.textInputElement,
-          &#x27;click&#x27;,
-          event &#x3D;&gt; {
-            this.handleTextareaMouseEvent(event, &#x27;click&#x27;);
-          }
-        );
-        this.textareaEventListeners.push(onClick);
-      }
-
-      if (this.tagMouseEnter.observers.length &gt; 0) {
-        const onMouseMove &#x3D; this.renderer.listen(
-          this.textInputElement,
-          &#x27;mousemove&#x27;,
-          event &#x3D;&gt; {
-            this.handleTextareaMouseEvent(event, &#x27;mousemove&#x27;);
-          }
-        );
-        const onMouseLeave &#x3D; this.renderer.listen(
-          this.textInputElement,
-          &#x27;mouseleave&#x27;,
-          event &#x3D;&gt; {
-            if (this.mouseHoveredTag) {
-              this.tagMouseLeave.emit(this.mouseHoveredTag);
-              this.mouseHoveredTag &#x3D; undefined;
+        // only add event listeners if the host component actually asks for it
+        if (this.tagClick.observers.length &gt; 0) {
+          const onClick &#x3D; this.renderer.listen(
+            this.textInputElement,
+            &#x27;click&#x27;,
+            event &#x3D;&gt; {
+              this.handleTextareaMouseEvent(event, &#x27;click&#x27;);
             }
-          }
-        );
-        this.textareaEventListeners.push(onMouseMove);
-        this.textareaEventListeners.push(onMouseLeave);
-      }
+          );
+          this.textareaEventListeners.push(onClick);
+        }
 
-      this.addTags();
+        if (this.tagMouseEnter.observers.length &gt; 0) {
+          const onMouseMove &#x3D; this.renderer.listen(
+            this.textInputElement,
+            &#x27;mousemove&#x27;,
+            event &#x3D;&gt; {
+              this.handleTextareaMouseEvent(event, &#x27;mousemove&#x27;);
+            }
+          );
+          const onMouseLeave &#x3D; this.renderer.listen(
+            this.textInputElement,
+            &#x27;mouseleave&#x27;,
+            event &#x3D;&gt; {
+              if (this.mouseHoveredTag) {
+                this.tagMouseLeave.emit(this.mouseHoveredTag);
+                this.mouseHoveredTag &#x3D; undefined;
+              }
+            }
+          );
+          this.textareaEventListeners.push(onMouseMove);
+          this.textareaEventListeners.push(onMouseLeave);
+        }
+
+        this.addTags();
+      }
     });
   }
 
@@ -1120,13 +1206,6 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       this.tagMouseLeave.emit(this.mouseHoveredTag);
       this.mouseHoveredTag &#x3D; undefined;
     }
-  }
-
-  private copyTextareaStyles() {
-    const computed: any &#x3D; getComputedStyle(this.textInputElement);
-    styleProperties.forEach(prop &#x3D;&gt; {
-      this.highlightElementContainerStyle[prop] &#x3D; computed[prop];
-    });
   }
 }
 </code></pre>
