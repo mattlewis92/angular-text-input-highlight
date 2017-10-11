@@ -430,4 +430,16 @@ describe('mwl-text-input-highlight component', () => {
       expect(highlightElement.offsetWidth).to.equal(206);
     })
   );
+
+  it(
+    'should not throw when the fixture is destroyed before the first render completes',
+    fakeAsync(() => {
+      const { fixture } = createComponent({
+        text: 'this is some text',
+        tags: [{ indices: { start: 8, end: 12 } }]
+      });
+      fixture.destroy();
+      expect(() => flush()).not.to.throw();
+    })
+  );
 });

@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.1.1...v1.2.0) (2017-10-11)
+
+
+### Bug Fixes
+
+* handle the component being destroyed before the initial render is complete ([cb2b3c1](https://github.com/mattlewis92/angular-text-input-highlight/commit/cb2b3c1))
+
+
+### Features
+
+* expose refresh method as part of the public api ([da95817](https://github.com/mattlewis92/angular-text-input-highlight/commit/da95817))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.1.0...v1.1.1) (2017-09-26)
 
