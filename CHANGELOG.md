@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.2.0...v1.2.1) (2017-11-02)
+
+
+### Bug Fixes
+
+* add support for angular 5 ([faf48b7](https://github.com/mattlewis92/angular-text-input-highlight/commit/faf48b7))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.1.1...v1.2.0) (2017-10-11)
 
