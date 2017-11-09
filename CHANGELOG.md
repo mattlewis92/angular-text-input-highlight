@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.2.1...v1.2.2) (2017-11-09)
+
+
+### Bug Fixes
+
+* make long tags wrap multiple lines ([8488879](https://github.com/mattlewis92/angular-text-input-highlight/commit/8488879))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.2.0...v1.2.1) (2017-11-02)
 
