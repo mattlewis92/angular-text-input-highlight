@@ -484,6 +484,9 @@
                             <li>
                                 <a href="#textInputElement">textInputElement</a>
                             </li>
+                            <li>
+                                <a href="#textInputValue">textInputValue</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -536,7 +539,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/text-input-highlight.component.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/text-input-highlight.component.ts:152</a></div>
                                 </td>
                             </tr>
     
@@ -652,6 +655,29 @@
                             </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="textInputValue"></a>
+                            <code>textInputValue</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The textarea value, in not provided will fall back to trying to grab it automatically from the textarea</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/text-input-highlight.component.ts:114</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -672,7 +698,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/text-input-highlight.component.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/text-input-highlight.component.ts:119</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -693,7 +719,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/text-input-highlight.component.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/text-input-highlight.component.ts:124</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -714,7 +740,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/text-input-highlight.component.ts:124</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/text-input-highlight.component.ts:129</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -740,7 +766,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/text-input-highlight.component.ts:186</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/text-input-highlight.component.ts:191</a></div>
                                 </td>
                             </tr>
     
@@ -770,7 +796,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/text-input-highlight.component.ts:154</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/text-input-highlight.component.ts:159</a></div>
                                 </td>
                             </tr>
     
@@ -816,7 +842,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/text-input-highlight.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/text-input-highlight.component.ts:139</a></div>
                                 </td>
                             </tr>
     
@@ -845,7 +871,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/text-input-highlight.component.ts:129</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/text-input-highlight.component.ts:134</a></div>
                                 </td>
                             </tr>
     
@@ -968,6 +994,11 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   @Input() textInputElement: HTMLTextAreaElement;
 
   /**
+   * The textarea value, in not provided will fall back to trying to grab it automatically from the textarea
+   */
+  @Input() textInputValue: string;
+
+  /**
    * Called when the area over a tag is clicked
    */
   @Output() tagClick &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
@@ -1025,7 +1056,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       this.textInputElementChanged();
     }
 
-    if (changes.tags || changes.tagCssClass) {
+    if (changes.tags || changes.tagCssClass || changes.textInputValue) {
       this.addTags();
     }
   }
@@ -1115,7 +1146,10 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   }
 
   private addTags() {
-    const textareaValue &#x3D; this.textInputElement.value;
+    const textInputValue &#x3D;
+      typeof this.textInputValue !&#x3D;&#x3D; &#x27;undefined&#x27;
+        ? this.textInputValue
+        : this.textInputElement.value;
 
     const prevTags: HighlightTag[] &#x3D; [];
     const parts: string[] &#x3D; [];
@@ -1145,14 +1179,14 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
         // TODO - implement this as an ngFor of items that is generated in the template for a cleaner solution
 
         const expectedTagLength &#x3D; tag.indices.end - tag.indices.start;
-        const tagContents &#x3D; textareaValue.slice(
+        const tagContents &#x3D; textInputValue.slice(
           tag.indices.start,
           tag.indices.end
         );
         if (tagContents.length &#x3D;&#x3D;&#x3D; expectedTagLength) {
           const previousIndex &#x3D;
             prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
-          const before &#x3D; textareaValue.slice(previousIndex, tag.indices.start);
+          const before &#x3D; textInputValue.slice(previousIndex, tag.indices.start);
           parts.push(escapeHtml(before));
           const cssClass &#x3D; tag.cssClass || this.tagCssClass;
           const tagId &#x3D; tagIndexIdPrefix + this.tags.indexOf(tag);
@@ -1167,7 +1201,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       });
     const remainingIndex &#x3D;
       prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
-    const remaining &#x3D; textareaValue.slice(remainingIndex);
+    const remaining &#x3D; textInputValue.slice(remainingIndex);
     parts.push(escapeHtml(remaining));
     parts.push(&#x27;&amp;nbsp;&#x27;);
     this.highlightedText &#x3D; parts.join(&#x27;&#x27;);

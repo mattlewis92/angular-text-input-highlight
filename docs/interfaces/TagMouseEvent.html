@@ -597,6 +597,11 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   @Input() textInputElement: HTMLTextAreaElement;
 
   /**
+   * The textarea value, in not provided will fall back to trying to grab it automatically from the textarea
+   */
+  @Input() textInputValue: string;
+
+  /**
    * Called when the area over a tag is clicked
    */
   @Output() tagClick &#x3D; new EventEmitter&lt;TagMouseEvent&gt;();
@@ -654,7 +659,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       this.textInputElementChanged();
     }
 
-    if (changes.tags || changes.tagCssClass) {
+    if (changes.tags || changes.tagCssClass || changes.textInputValue) {
       this.addTags();
     }
   }
@@ -744,7 +749,10 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
   }
 
   private addTags() {
-    const textareaValue &#x3D; this.textInputElement.value;
+    const textInputValue &#x3D;
+      typeof this.textInputValue !&#x3D;&#x3D; &#x27;undefined&#x27;
+        ? this.textInputValue
+        : this.textInputElement.value;
 
     const prevTags: HighlightTag[] &#x3D; [];
     const parts: string[] &#x3D; [];
@@ -774,14 +782,14 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
         // TODO - implement this as an ngFor of items that is generated in the template for a cleaner solution
 
         const expectedTagLength &#x3D; tag.indices.end - tag.indices.start;
-        const tagContents &#x3D; textareaValue.slice(
+        const tagContents &#x3D; textInputValue.slice(
           tag.indices.start,
           tag.indices.end
         );
         if (tagContents.length &#x3D;&#x3D;&#x3D; expectedTagLength) {
           const previousIndex &#x3D;
             prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
-          const before &#x3D; textareaValue.slice(previousIndex, tag.indices.start);
+          const before &#x3D; textInputValue.slice(previousIndex, tag.indices.start);
           parts.push(escapeHtml(before));
           const cssClass &#x3D; tag.cssClass || this.tagCssClass;
           const tagId &#x3D; tagIndexIdPrefix + this.tags.indexOf(tag);
@@ -796,7 +804,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       });
     const remainingIndex &#x3D;
       prevTags.length &gt; 0 ? prevTags[prevTags.length - 1].indices.end : 0;
-    const remaining &#x3D; textareaValue.slice(remainingIndex);
+    const remaining &#x3D; textInputValue.slice(remainingIndex);
     parts.push(escapeHtml(remaining));
     parts.push(&#x27;&amp;nbsp;&#x27;);
     this.highlightedText &#x3D; parts.join(&#x27;&#x27;);
