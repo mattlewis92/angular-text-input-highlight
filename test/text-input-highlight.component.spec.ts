@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
       <mwl-text-input-highlight
         [tags]="tags"
         [textInputElement]="textarea"
+        [textInputValue]="textInputValue"
         (tagClick)="tagClick($event)"
         (tagMouseEnter)="tagMouseEnter($event)"
         (tagMouseLeave)="tagMouseLeave($event)">
@@ -46,6 +47,7 @@ class TestComponent {
   tagClick = sinon.spy();
   tagMouseEnter = sinon.spy();
   tagMouseLeave = sinon.spy();
+  textInputValue: string;
 }
 
 function createComponent({
@@ -442,4 +444,16 @@ describe('mwl-text-input-highlight component', () => {
       expect(() => flush()).not.to.throw();
     })
   );
+
+  it('should allow the textarea value to be overridden', () => {
+    const { highlight, fixture } = createComponent({
+      text: 'this is some text',
+      tags: [{ indices: { start: 8, end: 12 } }]
+    });
+    fixture.componentInstance.textInputValue = 'this is some text';
+    fixture.detectChanges();
+    expect(highlight.nativeElement.children[0].innerHTML).to.deep.equal(
+      'this is <span class="text-highlight-tag text-highlight-tag-id-0 ">some</span> text&nbsp;'
+    );
+  });
 });
