@@ -104,7 +104,7 @@
     "karma-webpack": "^2.0.5",
     "lint-staged": "^4.2.3",
     "mocha": "^4.0.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.0",
     "prettier": "^1.7.4",
     "rxjs": "^5.4.3",
     "sass-loader": "^6.0.6",
