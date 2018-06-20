@@ -79,6 +79,7 @@ function escapeHtml(str: string): string {
 export interface TagMouseEvent {
   tag: HighlightTag;
   target: HTMLElement;
+  event: MouseEvent;
 }
 
 @Component({
@@ -343,7 +344,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
       if (tagClass) {
         const tagId = tagClass.replace(tagIndexIdPrefix, '');
         const tag: HighlightTag = this.tags[+tagId];
-        const tagMouseEvent = { tag, target };
+        const tagMouseEvent = { tag, target, event };
         if (eventName === 'click') {
           this.tagClick.emit(tagMouseEvent);
         } else if (!this.mouseHoveredTag) {
@@ -352,6 +353,7 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
         }
       }
     } else if (eventName === 'mousemove' && this.mouseHoveredTag) {
+      this.mouseHoveredTag.event = event;
       this.tagMouseLeave.emit(this.mouseHoveredTag);
       this.mouseHoveredTag = undefined;
     }
