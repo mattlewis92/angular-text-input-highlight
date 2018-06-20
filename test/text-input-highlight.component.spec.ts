@@ -279,16 +279,18 @@ describe('mwl-text-input-highlight component', () => {
       const spanRect = fixture.nativeElement
         .querySelector('.text-highlight-tag')
         .getBoundingClientRect();
+      const eventObj: any = {
+        clientX: spanRect.left + 1,
+        clientY: spanRect.top + 1
+      };
       fixture.debugElement
         .query(By.css('textarea'))
-        .triggerEventHandler('click', {
-          clientX: spanRect.left + 1,
-          clientY: spanRect.top + 1
-        });
+        .triggerEventHandler('click', eventObj);
       fixture.detectChanges();
       expect(fixture.componentInstance.tagClick).to.have.been.calledWith({
         target: highlight.nativeElement.querySelector('span'),
-        tag: { indices: { start: 8, end: 12 } }
+        tag: { indices: { start: 8, end: 12 } },
+        event: eventObj
       });
     })
   );
@@ -326,16 +328,18 @@ describe('mwl-text-input-highlight component', () => {
       const spanRect = fixture.nativeElement
         .querySelector('.text-highlight-tag')
         .getBoundingClientRect();
+      const eventObj = {
+        clientX: spanRect.left + 1,
+        clientY: spanRect.top + 1
+      };
       fixture.debugElement
         .query(By.css('textarea'))
-        .triggerEventHandler('mousemove', {
-          clientX: spanRect.left + 1,
-          clientY: spanRect.top + 1
-        });
+        .triggerEventHandler('mousemove', eventObj);
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseEnter).to.have.been.calledWith({
         target: highlight.nativeElement.querySelector('span'),
-        tag: { indices: { start: 8, end: 12 } }
+        tag: { indices: { start: 8, end: 12 } },
+        event: eventObj
       });
       expect(fixture.componentInstance.tagMouseLeave.callCount).to.equal(0);
       fixture.debugElement
@@ -346,16 +350,19 @@ describe('mwl-text-input-highlight component', () => {
         });
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseEnter.callCount).to.equal(1);
+
+      const leaveEventObj = {
+        clientX: spanRect.left - 1,
+        clientY: spanRect.top - 1
+      };
       fixture.debugElement
         .query(By.css('textarea'))
-        .triggerEventHandler('mousemove', {
-          clientX: spanRect.left - 1,
-          clientY: spanRect.top - 1
-        });
+        .triggerEventHandler('mousemove', leaveEventObj);
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseLeave).to.have.been.calledWith({
         target: highlight.nativeElement.querySelector('span'),
-        tag: { indices: { start: 8, end: 12 } }
+        tag: { indices: { start: 8, end: 12 } },
+        event: leaveEventObj
       });
     })
   );
@@ -371,28 +378,32 @@ describe('mwl-text-input-highlight component', () => {
       const spanRect = fixture.nativeElement
         .querySelector('.text-highlight-tag')
         .getBoundingClientRect();
+      const eventObj = {
+        clientX: spanRect.left + 1,
+        clientY: spanRect.top + 1
+      };
       fixture.debugElement
         .query(By.css('textarea'))
-        .triggerEventHandler('mousemove', {
-          clientX: spanRect.left + 1,
-          clientY: spanRect.top + 1
-        });
+        .triggerEventHandler('mousemove', eventObj);
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseEnter).to.have.been.calledWith({
         target: highlight.nativeElement.querySelector('span'),
-        tag: { indices: { start: 8, end: 12 } }
+        tag: { indices: { start: 8, end: 12 } },
+        event: eventObj
       });
       expect(fixture.componentInstance.tagMouseLeave.callCount).to.equal(0);
+      const leaveEventObj = {
+        clientX: spanRect.left + 1,
+        clientY: spanRect.top + 1
+      };
       fixture.debugElement
         .query(By.css('textarea'))
-        .triggerEventHandler('mouseleave', {
-          clientX: spanRect.left + 1,
-          clientY: spanRect.top + 1
-        });
+        .triggerEventHandler('mouseleave', leaveEventObj);
       fixture.detectChanges();
       expect(fixture.componentInstance.tagMouseLeave).to.have.been.calledWith({
         target: highlight.nativeElement.querySelector('span'),
-        tag: { indices: { start: 8, end: 12 } }
+        tag: { indices: { start: 8, end: 12 } },
+        event: leaveEventObj
       });
     })
   );

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.3.1...v1.4.0) (2018-06-20)
+
+
+### Features
+
+* add original MouseEvent to tag events ([#5](https://github.com/mattlewis92/angular-text-input-highlight/issues/5)) ([8985b76](https://github.com/mattlewis92/angular-text-input-highlight/commit/8985b76))
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.3.0...v1.3.1) (2018-05-05)
 
