@@ -48,6 +48,7 @@ class TestComponent {
   tagMouseEnter = sinon.spy();
   tagMouseLeave = sinon.spy();
   textInputValue: string;
+  refresh = sinon.spy();
 }
 
 function createComponent({
@@ -407,6 +408,17 @@ describe('mwl-text-input-highlight component', () => {
       });
     })
   );
+
+  it('should refresh when textarea is resized', fakeAsync(() => {
+    const { textarea, fixture } = createComponent({
+      text: 'this is some text',
+      tags: [{ indices: { start: 8, end: 12 } }]
+    });
+    flushTagsChanges(fixture);
+    textarea.triggerEventHandler('mouseup', {})
+    fixture.detectChanges();
+    expect(fixture.componentInstance.refresh.calledOnce);
+  }));
 
   it(
     'should not break with html characters',
