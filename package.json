@@ -1,6 +1,6 @@
 {
   "name": "angular-text-input-highlight",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A component that can highlight parts of text in a textarea. Useful for displaying mentions etc",
   "main": "./bundles/angular-text-input-highlight.umd.js",
   "module": "./index.js",
@@ -24,10 +24,8 @@
     "release:npm": "npm run build:dist && npm run copyfiles && npm publish dist",
     "release": "npm run release:git && npm run release:npm",
     "postrelease": "npm run build:clean && npm run gh-pages",
-    "commitmsg": "commitlint -e",
     "codecov": "cat coverage/lcov.info | codecov",
-    "prettier": "prettier --single-quote --parser typescript --write",
-    "precommit": "lint-staged"
+    "prettier": "prettier --single-quote --parser typescript --write"
   },
   "lint-staged": {
     "{demo,src,test}/**/*.ts": [
@@ -42,8 +40,13 @@
   },
   "commitlint": {
     "extends": [
-      "@commitlint/config-angular"
-    ]
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "subject-case": [
+        0
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -72,8 +75,8 @@
     "@angular/platform-browser": "^4.4.4",
     "@angular/platform-browser-dynamic": "^4.4.4",
     "@commitlint/cli": "^4.1.1",
-    "@commitlint/config-angular": "^3.1.1",
-    "@commitlint/prompt": "^4.1.1",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/prompt": "^8.3.5",
     "@compodoc/compodoc": "^1.0.1",
     "@types/chai": "^4.0.4",
     "@types/html-webpack-plugin": "^2.11.2",
@@ -93,7 +96,7 @@
     "del-cli": "^1.0.0",
     "fork-ts-checker-webpack-plugin": "^0.2.8",
     "html-webpack-plugin": "^2.30.1",
-    "husky": "^0.14.3",
+    "husky": "^4.2.1",
     "istanbul-instrumenter-loader": "^3.0.0",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.1.1",
@@ -104,7 +107,7 @@
     "karma-webpack": "^2.0.5",
     "lint-staged": "^4.2.3",
     "mocha": "^4.0.1",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.7.4",
     "rxjs": "^5.4.3",
     "sass-loader": "^6.0.6",
@@ -126,5 +129,11 @@
   },
   "peerDependencies": {
     "@angular/core": ">=2.0.0 <7.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e",
+      "pre-commit": "lint-staged"
+    }
   }
 }
