@@ -24,10 +24,8 @@
     "release:npm": "npm run build:dist && npm run copyfiles && npm publish dist",
     "release": "npm run release:git && npm run release:npm",
     "postrelease": "npm run build:clean && npm run gh-pages",
-    "commitmsg": "commitlint -e",
     "codecov": "cat coverage/lcov.info | codecov",
-    "prettier": "prettier --single-quote --parser typescript --write",
-    "precommit": "lint-staged"
+    "prettier": "prettier --single-quote --parser typescript --write"
   },
   "lint-staged": {
     "{demo,src,test}/**/*.ts": [
@@ -45,7 +43,9 @@
       "@commitlint/config-conventional"
     ],
     "rules": {
-      "subject-case": [0]
+      "subject-case": [
+        0
+      ]
     }
   },
   "repository": {
@@ -96,7 +96,7 @@
     "del-cli": "^1.0.0",
     "fork-ts-checker-webpack-plugin": "^0.2.8",
     "html-webpack-plugin": "^2.30.1",
-    "husky": "^0.14.3",
+    "husky": "^4.2.1",
     "istanbul-instrumenter-loader": "^3.0.0",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.1.1",
@@ -129,5 +129,11 @@
   },
   "peerDependencies": {
     "@angular/core": ">=2.0.0 <7.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e",
+      "pre-commit": "lint-staged"
+    }
   }
 }
