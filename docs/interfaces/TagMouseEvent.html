@@ -743,6 +743,9 @@ export class TextInputHighlightComponent implements OnChanges, OnDestroy {
               tag.clientRect &#x3D; tag.element.getBoundingClientRect();
               return tag;
             });
+          }),
+          this.renderer.listen(this.textInputElement, &#x27;mouseup&#x27;, () &#x3D;&gt; {
+            this.refresh();
           })
         ];
 
