@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.4.1...v1.4.2) (2020-03-05)
+
+
+### Bug Fixes
+
+* allow latest angular versions in peer dependencies ([0f07483](https://github.com/mattlewis92/angular-text-input-highlight/commit/0f07483))
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.4.0...v1.4.1) (2020-02-12)
 
