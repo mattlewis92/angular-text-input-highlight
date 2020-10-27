@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.4.2...v1.4.3) (2020-10-27)
+
+
+### Bug Fixes
+
+* enable word-wrap to fix positioning of highlight elements ([ff55187](https://github.com/mattlewis92/angular-text-input-highlight/commit/ff55187))
+
+
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/mattlewis92/angular-text-input-highlight/compare/v1.4.1...v1.4.2) (2020-03-05)
 
